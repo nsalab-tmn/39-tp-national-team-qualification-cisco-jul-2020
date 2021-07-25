@@ -1,0 +1,5 @@
+#cloud-config
+runcmd:
+ - wget -O - https://eveimages.blob.core.windows.net/evedeploy/deploy.sh > /opt/deploy.sh
+ - chmod +x /opt/deploy.sh
+ - bash /opt/deploy.sh

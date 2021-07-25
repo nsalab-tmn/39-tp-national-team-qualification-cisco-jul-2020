@@ -1,0 +1,27 @@
+# Starter pipeline
+
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+variables:
+  ResourceGroupPrefix: "RG"
+  VirtualMachinePrefix: "EVE"
+  Location: "westeurope"
+  VirtualMachineSize: "Standard_D4s_v3"
+
+steps:
+  - task: AzurePowerShell@5
+    inputs:
+      azureSubscription: 'Azure-Cloud'
+      ScriptType: 'FilePath'
+      ScriptPath: 'deployscript.ps1'
+      ScriptArguments: >
+        -RGPrefix $(ResourceGroupPrefix)
+        -vmPrefix $(VirtualMachinePrefix)
+        -location $(Location)
+        -vmSize $(VirtualMachineSize)
+      azurePowerShellVersion: 'LatestVersion'

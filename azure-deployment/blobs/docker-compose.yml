@@ -1,0 +1,6 @@
+version: '2'
+services:
+  sp2020:
+    image: lawliet2012/sp2020-module-c
+    volumes:
+      - ./artifacts:/app/artifacts
